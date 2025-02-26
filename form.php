@@ -16,17 +16,15 @@
     </form>
 
     <?php
-    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['nama']) && isset($_POST['nim'])) {
-        // Ambil data 
-        $nama = $_POST['nama'];
-        $nim = $_POST['nim'];
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['nama']) && !empty($_POST['nim'])) {
+        // Ambil data yang diinputkan
+        $nama = htmlspecialchars($_POST['nama']);
+        $nim = htmlspecialchars($_POST['nim']);
 
-        // Menampilkan hasil input jika tidak kosong
-        if ($nama !== "" && $nim !== "") {
-            echo "<h3>Hasil Input:</h3>";
-            echo "Nama: " . $nama . "<br>";
-            echo "NIM: " . $nim . "<br>";
-        }
+        // Menampilkan hasil input
+        echo "<h3>Hasil Input:</h3>";
+        echo "Nama: " . $nama . "<br>";
+        echo "NIM: " . $nim . "<br>";
     }
     ?>
 </body>
